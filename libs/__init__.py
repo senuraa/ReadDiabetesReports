@@ -1,0 +1,1 @@
+from .hocr_search import parse_hocr
