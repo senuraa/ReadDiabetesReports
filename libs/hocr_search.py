@@ -33,11 +33,10 @@ def parse_hocr(search_terms=None, hocr_file=None, regex=None):
     for word in words:
 
         w = word.get_text().lower()
-
         for s in search_terms:
 
             # If the word is in our search terms, find the bounding box
-            if len(w) > 1 and difflib.SequenceMatcher(None, s, w).ratio() > .5:
+            if len(w) > 1 and difflib.SequenceMatcher(None, s, w).ratio() > 0.8:
                 bbox = word['title'].split(';')
                 bbox = bbox[0].split(' ')
                 bbox = tuple([int(x) for x in bbox[1:]])
@@ -49,4 +48,3 @@ def parse_hocr(search_terms=None, hocr_file=None, regex=None):
             else:
                 pass
     return result
-##TODO: Need to extract the corresponding number by sending the cropped image to google-cloud vision
