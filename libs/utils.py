@@ -1,5 +1,5 @@
 import time
-
+import os
 
 def get_current_time():
     current_milli = int(round(time.time() * 1000))
@@ -23,3 +23,8 @@ def calc_result_box(text_loc=None,img_width=None):
         break
     calc_loc = (el_one_loc[0]-10,el_one_loc[1]-10,el_one_loc[2]+(img_width*0.4),el_one_loc[3]+10);
     return calc_loc
+
+def check_dir_exist(dirname):
+    if not os.path.isdir('reader/'+dirname)== True:
+        os.mkdir(dirname)
+
