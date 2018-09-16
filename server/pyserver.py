@@ -8,7 +8,7 @@ from libs import utils
 # utils.check_dir_exist('cropped-imgs')
 # utils.check_dir_exist('hocr-files')
 # utils.check_dir_exist('img-origin')
-print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
 app = Flask(__name__)
 template = {
     "info": {

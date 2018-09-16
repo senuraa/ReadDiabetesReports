@@ -42,7 +42,7 @@ class ReadImage(Resource):
         if not req.get("image") or not req.get("search_terms"):
             return "Invalid image or search terms"
         session_filename = utils.get_current_time()
-        reader_module_path = os.path.realpath(__file__)
+        reader_module_path = os.path.dirname(os.path.realpath(__file__))
         origin_img_base64 = req["image"]
         origin_img_fp = os.path.join(reader_module_path,'img-origin/'+session_filename+'.jpg')
 
