@@ -61,7 +61,6 @@ class ReadImage(Resource):
         cropped_img_fp = os.path.join(reader_module_path,'cropped-imgs/')
         cropped_image.save(cropped_img_fp+session_filename+".jpg", "jpeg")
         response = google_vision.get_value(cropped_img_fp+session_filename+".jpg")
-        cropped_image.show()
         res_detail = {"extracted_value":response}
         return (res_detail)
 
