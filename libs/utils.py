@@ -12,7 +12,7 @@ def calc_result_box(text_loc=None,img_width=None):
     text_loc : dict of all text bbox coordinates
     {'fasting': (287, 1329, 483, 1364), 'blood': (506, 1330, 664, 1366), 'sugar': (685, 1332, 846, 1368)}
 
-    img_width: maximu width to check
+    img_width: maximum width to check
     output
     calc_loc: tuple of the calculated box
     """
