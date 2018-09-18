@@ -55,7 +55,6 @@ class ReadImage(Resource):
         search_terms = tuple(req["search_terms"])
         # print(search_terms)
         hocr_result = hocr_search.parse_hocr(search_terms, hocr_filepath + '.hocr')
-        print(hocr_result)
         img_width, img_height = origin_img.size
         cropped_image = origin_img.crop(utils.calc_result_box(hocr_result, img_width))
         cropped_img_fp = os.path.join(reader_module_path, 'cropped-imgs/')

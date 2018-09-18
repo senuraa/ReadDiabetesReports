@@ -10,7 +10,6 @@ def get_value(img_filepath):
     image = vision.types.Image(content=content)
     res = client.text_detection(image=image)
     texts = res.text_annotations
-    print(texts)
     for text in texts:
         if re.match('^[0-9\.]*$', text.description):
             org_value = text.description

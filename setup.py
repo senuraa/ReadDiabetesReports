@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='diabetesReportReader',
-    version='',
+    version='0.0.1',
     packages=['venv.lib.python3.7.site-packages.bs4', 'venv.lib.python3.7.site-packages.bs4.tests',
               'venv.lib.python3.7.site-packages.bs4.builder', 'venv.lib.python3.7.site-packages.cv2',
               'venv.lib.python3.7.site-packages.cv2.data', 'venv.lib.python3.7.site-packages.PIL',
