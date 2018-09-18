@@ -27,5 +27,5 @@ def calc_result_box(text_loc=None, img_width=None):
 
 
 def create_dir(dirname):
-    if not os.path.isdir(os.path.join(os.path.abspath('..'), "reader", dirname)) == True:
-        os.makedirs(os.path.join(os.path.abspath('..'), "reader", dirname))
+    if not os.path.isdir(os.path.join(os.path.abspath('.'), dirname)) == True:
+        os.makedirs(os.path.join(os.path.abspath('.'), dirname))

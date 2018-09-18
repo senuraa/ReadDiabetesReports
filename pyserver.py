@@ -2,8 +2,8 @@ from flasgger import Swagger
 from flask import Flask
 from flask_restful import Api
 import os
-import reader
-from libs import utils
+import extract_text
+import utils
 
 # utils.check_dir_exist('cropped-imgs')
 # utils.check_dir_exist('hocr-files')
@@ -24,7 +24,7 @@ template = {
 api = Api(app)
 Swagger = Swagger(app, template=template)
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
-api.add_resource(reader.ReadImage, '/api/readimage', methods=['POST'])
+api.add_resource(extract_text.ReadImage, '/api/readimage', methods=['POST'])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True, threaded=True)

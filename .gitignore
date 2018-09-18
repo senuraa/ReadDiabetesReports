@@ -14,6 +14,7 @@ tmtagsHistory
 *.sublime-workspace
 .bundle
 .idea/
-reader/hocr-files
+hocr-files/
 service-account.json
-reader/img-origin
+img-origin/
+cropped-imgs/

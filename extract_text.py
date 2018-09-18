@@ -1,12 +1,12 @@
 import os
 from pytesseract import pytesseract
-from libs import hocr_search, utils, google_vision
+# from libs import hocr_search, utils, google_vision
 from PIL import Image
 import base64
 from io import BytesIO
 from flask import request
 from flask_restful import Resource
-
+import hocr_search, utils, google_vision
 
 class ReadImage(Resource):
 
