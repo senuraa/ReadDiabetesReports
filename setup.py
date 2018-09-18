@@ -1,15 +1,23 @@
-from setuptools import find_packages, setup
-from reader import extract_text
-from libs import hocr_search, google_vision, utils
+from setuptools import setup
+import os
+
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
 setup(
-    author="Senura Seneviratne",
-    author_email="senuraa@msn.com",
-    packages=find_packages(),
+    name='OCR for Reports',
+    version='0.1',
+    long_description=read('README.md'),
+    packages=['libs', 'reader', 'server'],
     include_package_data=True,
-    cmdclass={
-        "package": extract_text,
-        "package": hocr_search,
-        "package": google_vision,
-        "package": utils
-    }
+    zip_safe=False,
+    install_requires=[
+        'pytesseract',
+        'Flask',
+        'flask-restful',
+        'flasgger',
+        'Pillow',
+        'google-cloud-vision'
+    ]
 )
