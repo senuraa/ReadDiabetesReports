@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve myproject
+After=network.target
+
+[Service]
+User=ubuntu
+Group=admin
+WorkingDirectory=/home/ubuntu/ReadDiabetesReports
+Environment="PATH=/home/ubuntu/ReadDiabetesReports/venv/bin"
+ExecStart=/home/ubuntu/ReadDiabetesReports/venv/bin/uwsgi --ini diabetesreportreader.ini
+
+[Install]
+WantedBy=multi-user.target
