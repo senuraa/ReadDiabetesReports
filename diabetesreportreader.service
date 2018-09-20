@@ -11,3 +11,17 @@ ExecStart=/home/ubuntu/ReadDiabetesReports/venv/bin/uwsgi --ini diabetesreportre
 
 [Install]
 WantedBy=multi-user.target
+
+/home/ubuntu/ReadDiabetesReports
+
+sudo nano /etc/apache2/sites-enabled/000-default.conf
+
+WSGIDaemonProcess ReadDiabetesReports threads=5
+WSGIScriptAlias / /var/www/html/ReadDiabetesReports/app.wsgi
+
+<Directory ReadDiabetesReports>
+	WSGIProcessGroup ReadDiabetesReports
+	WSGIApplicationGroup %{GLOBAL}
+	Order deny,allow
+	Allow from all
+</Directory>

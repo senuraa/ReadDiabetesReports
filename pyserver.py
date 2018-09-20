@@ -4,6 +4,7 @@ from flask_restful import Api
 import os
 import extract_text
 import utils
+from flask_cors import CORS
 
 # utils.check_dir_exist('cropped-imgs')
 # utils.check_dir_exist('hocr-files')
@@ -12,6 +13,7 @@ utils.create_dir("cropped-imgs")
 utils.create_dir("hocr-files")
 utils.create_dir("img-origin")
 app = Flask(__name__)
+CORS(app,resources={r"/api/*": {"origins": "*"}})
 template = {
     "info": {
         "title": "OCR ENGINE for health reports",
