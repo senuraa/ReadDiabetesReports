@@ -5,7 +5,7 @@ from PIL import Image
 import base64
 from io import BytesIO
 from flask import request
-from flask_restful import Resource
+from flask_restful import Resource, abort
 import hocr_search, utils, google_vision
 
 class ReadImage(Resource):
@@ -54,11 +54,15 @@ class ReadImage(Resource):
 
         search_terms = tuple(req["search_terms"])
         # print(search_terms)
-        hocr_result = hocr_search.parse_hocr(search_terms, hocr_filepath + '.hocr')
-        img_width, img_height = origin_img.size
-        cropped_image = origin_img.crop(utils.calc_result_box(hocr_result, img_width))
-        cropped_img_fp = os.path.join(reader_module_path, 'cropped-imgs/')
-        cropped_image.save(cropped_img_fp + session_filename + ".jpg", "jpeg")
-        response = google_vision.get_value(cropped_img_fp + session_filename + ".jpg")
-        res_detail = {"extracted_value": response}
-        return (res_detail)
+        try:
+            hocr_result = hocr_search.parse_hocr(search_terms, hocr_filepath + '.hocr')
+            img_width, img_height = origin_img.size
+            cropped_image = origin_img.crop(utils.calc_result_box(hocr_result, img_width))
+            cropped_img_fp = os.path.join(reader_module_path, 'cropped-imgs/')
+            cropped_image.save(cropped_img_fp + session_filename + ".jpg", "jpeg")
+            response = google_vision.get_value(cropped_img_fp + session_filename + ".jpg")
+            res_detail = {"extracted_value": response}
+            return (res_detail)
+        except Exception as e:
+            error_detail = {"error":e}
+            abort(500,message="Search terms did not match the document")
