@@ -9,7 +9,6 @@ from flask_cors import CORS
 # utils.check_dir_exist('cropped-imgs')
 # utils.check_dir_exist('hocr-files')
 # utils.check_dir_exist('img-origin')
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/ReadDiabetesReports/google-service-account.json"
 utils.create_dir("cropped-imgs")
 utils.create_dir("hocr-files")
 utils.create_dir("img-origin")
